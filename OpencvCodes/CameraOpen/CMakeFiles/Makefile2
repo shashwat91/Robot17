@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ishu/Robot17/OpencvCodes/CameraOpen
+CMAKE_SOURCE_DIR = /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ishu/Robot17/OpencvCodes/CameraOpen
+CMAKE_BINARY_DIR = /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen
 
 #=============================================================================
 # Target rules for target CMakeFiles/cameraopen.dir
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/ishu/Robot17/OpencvCodes/CameraOpen
 CMakeFiles/cameraopen.dir/all:
 	$(MAKE) -f CMakeFiles/cameraopen.dir/build.make CMakeFiles/cameraopen.dir/depend
 	$(MAKE) -f CMakeFiles/cameraopen.dir/build.make CMakeFiles/cameraopen.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles  1
 	@echo "Built target cameraopen"
 .PHONY : CMakeFiles/cameraopen.dir/all
 
@@ -69,9 +69,9 @@ all: CMakeFiles/cameraopen.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cameraopen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cameraopen.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles 0
 .PHONY : CMakeFiles/cameraopen.dir/rule
 
 # Convenience name for target.

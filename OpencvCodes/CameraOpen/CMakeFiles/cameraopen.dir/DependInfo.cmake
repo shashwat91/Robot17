@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ishu/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp" "/home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles/cameraopen.dir/cameraopen.cpp.o"
+  "/home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp" "/home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles/cameraopen.dir/cameraopen.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

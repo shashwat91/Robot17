@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ishu/Robot17/OpencvCodes/CameraOpen
+CMAKE_SOURCE_DIR = /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ishu/Robot17/OpencvCodes/CameraOpen
+CMAKE_BINARY_DIR = /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cameraopen.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/cameraopen.dir/flags.make
 
 CMakeFiles/cameraopen.dir/cameraopen.cpp.o: CMakeFiles/cameraopen.dir/flags.make
 CMakeFiles/cameraopen.dir/cameraopen.cpp.o: cameraopen.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/cameraopen.dir/cameraopen.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cameraopen.dir/cameraopen.cpp.o -c /home/ishu/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/cameraopen.dir/cameraopen.cpp.o -c /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp
 
 CMakeFiles/cameraopen.dir/cameraopen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cameraopen.dir/cameraopen.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ishu/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp > CMakeFiles/cameraopen.dir/cameraopen.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp > CMakeFiles/cameraopen.dir/cameraopen.cpp.i
 
 CMakeFiles/cameraopen.dir/cameraopen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cameraopen.dir/cameraopen.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ishu/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp -o CMakeFiles/cameraopen.dir/cameraopen.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp -o CMakeFiles/cameraopen.dir/cameraopen.cpp.s
 
 CMakeFiles/cameraopen.dir/cameraopen.cpp.o.requires:
 .PHONY : CMakeFiles/cameraopen.dir/cameraopen.cpp.o.requires
@@ -136,6 +136,6 @@ CMakeFiles/cameraopen.dir/clean:
 .PHONY : CMakeFiles/cameraopen.dir/clean
 
 CMakeFiles/cameraopen.dir/depend:
-	cd /home/ishu/Robot17/OpencvCodes/CameraOpen && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ishu/Robot17/OpencvCodes/CameraOpen /home/ishu/Robot17/OpencvCodes/CameraOpen /home/ishu/Robot17/OpencvCodes/CameraOpen /home/ishu/Robot17/OpencvCodes/CameraOpen /home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles/cameraopen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen /home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/CMakeFiles/cameraopen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cameraopen.dir/depend
 

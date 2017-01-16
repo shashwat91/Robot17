@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/ishu/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp
+/home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cameraopen.cpp
 cv.h
-/home/ishu/Robot17/OpencvCodes/CameraOpen/cv.h
+/home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/cv.h
 highgui.h
-/home/ishu/Robot17/OpencvCodes/CameraOpen/highgui.h
+/home/ishu/LineIP/src/Robot17/OpencvCodes/CameraOpen/highgui.h
 stdio.h
 -
 
