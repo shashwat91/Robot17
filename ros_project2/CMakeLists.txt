@@ -19,6 +19,9 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(twist_ros src/twist.cpp)
 target_link_libraries(twist_ros ${catkin_LIBRARIES} ncurses)
+
+add_executable(kb_ros src/kb_commands.cpp)
+target_link_libraries(kb_ros ${catkin_LIBRARIES} ncurses)
 #add_dependencies(twist_ros beginner_tutorials_generate_messages_cpp)
 
 # %EndTag(FULLTEXT)%
