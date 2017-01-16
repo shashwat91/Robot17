@@ -1,0 +1,4 @@
+yellow detect(sum of yellow and white)
+blink led for 3 second
+room 2
+bomb diffuse

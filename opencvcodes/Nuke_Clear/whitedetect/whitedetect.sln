@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "whitedetect", "whitedetect\whitedetect.vcproj", "{E13A1FD6-7337-4A13-907B-187D0D2F8A95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E13A1FD6-7337-4A13-907B-187D0D2F8A95}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E13A1FD6-7337-4A13-907B-187D0D2F8A95}.Debug|Win32.Build.0 = Debug|Win32
+		{E13A1FD6-7337-4A13-907B-187D0D2F8A95}.Release|Win32.ActiveCfg = Release|Win32
+		{E13A1FD6-7337-4A13-907B-187D0D2F8A95}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

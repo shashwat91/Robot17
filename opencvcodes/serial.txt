@@ -1,0 +1,15 @@
+system( "MODE COM1: BAUD=9600 PARITY=n DATA=8 STOP=1" ) ;
+
+
+FILE* port;
+
+// SEND LOOP
+
+port = fopen( "COM1:", "w" ) ;
+fprintf( port, "Z" ) ;
+fclose( port ) ;
+fcloseall();
+
+//loop END
+
+//MUST change the connected port to COM1 using device manager
