@@ -1,0 +1,1 @@
+/home/ishu/Robot17/OpencvCodes/CameraOpen/CMakeFiles/cameraopen.dir
