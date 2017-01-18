@@ -17,8 +17,8 @@ catkin_package()
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-#add_executable(linefollower_17 src/linefollower_17.cpp)
-#target_link_libraries(linefollower_17 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(linefollower_17 src/linefollower_17.cpp)
+target_link_libraries(linefollower_17 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #add_dependencies(twist_ros beginner_tutorials_generate_messages_cpp)
 
 # %EndTag(FULLTEXT)%
