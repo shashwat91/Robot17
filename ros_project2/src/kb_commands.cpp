@@ -44,39 +44,28 @@ int main(int argc, char **argv)
       {
         case 119:
         case 87: 
-<<<<<<< HEAD
-            xyz.linear.x = 1.0;
-=======
+
             xyz.linear.x = -1.0;
->>>>>>> 379674845536b531da29ac520883b10372415b4e
             xyz.angular.z = 0;
             break;
         case 115:
         case 83:
-<<<<<<< HEAD
-            xyz.linear.x = -1.0;
-=======
+
             xyz.linear.x = 1.0;
->>>>>>> 379674845536b531da29ac520883b10372415b4e
             xyz.angular.z = 0;
             break;
         case 97:
         case 65:
             xyz.linear.x = 0.0;
-<<<<<<< HEAD
+
             xyz.angular.z = 1.0;
-=======
-            xyz.angular.z = -1.0;
->>>>>>> 379674845536b531da29ac520883b10372415b4e
             break;
         case 100:
         case 68:
             xyz.linear.x = 0.0;
-<<<<<<< HEAD
+
             xyz.angular.z = -1.0;
-=======
-            xyz.angular.z = 1.0;
->>>>>>> 379674845536b531da29ac520883b10372415b4e
+
             break;
         case 27:
             endwin();

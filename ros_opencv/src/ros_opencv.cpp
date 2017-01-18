@@ -7,14 +7,17 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+
 void chatterCallback(const sensor_msgs::ImageConstPtr& msg)
 {
    //ROS_INFO("I heard: [%s]", msg->data.c_str());
-   cv::Mat rgb_img(WIDTH, HEIGHT, CV_8UC3);
-   toCVImg(img, rgb_img);
+   cv_bridge::CvImagePtr img_ptr;
+   cv::Mat rgb_img;
    cv::namedWindow("window1");
-   cv::imshow("ROS Image", rgb_img);  //cv_bridge::toCvShare(msg, "bgr8")->image
-   cv::waitKey(0);
+   img_ptr = cv_bridge::toCvCopy(msg,sensor_msgs::image_encodings::BGR8);
+   rgb_img=img_ptr ->image;
+   cv::imshow("ROS Image", rgb_img); 
+   cv::waitKey(1);
 }
 
 
