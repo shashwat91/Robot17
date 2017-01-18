@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "test_node2");
   ros::NodeHandle n;
-  ros::Publisher chatter_pub = n.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 1000);
+  ros::Publisher chatter_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
   ros::Rate loop_rate(1);
   
   initscr();
@@ -44,23 +44,23 @@ int main(int argc, char **argv)
       {
         case 119:
         case 87: 
-            xyz.linear.x = 2.0;
+            xyz.linear.x = -1.0;
             xyz.angular.z = 0;
             break;
         case 115:
         case 83:
-            xyz.linear.x = -2.0;
+            xyz.linear.x = 1.0;
             xyz.angular.z = 0;
             break;
         case 97:
         case 65:
             xyz.linear.x = 0.0;
-            xyz.angular.z = 2.0;
+            xyz.angular.z = -1.0;
             break;
         case 100:
         case 68:
             xyz.linear.x = 0.0;
-            xyz.angular.z = -2.0;
+            xyz.angular.z = 1.0;
             break;
         case 27:
             endwin();
