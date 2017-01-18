@@ -57,6 +57,8 @@ center.y = m01/m00;
   cv::findContours(canny, contour, heirarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0,0));
   std::vector<cv::Moments> mu(contour.size());
   std::vector<cv::Point2f> mc(contour.size());
+  double left = (width -21)/2 -30;
+  double right = (width - 21)/2 + 30;
   double ptr=0.0;
   int count=0;
   for(int i = 0; i<contour.size();++i)
@@ -75,10 +77,24 @@ center.y = m01/m00;
 	if(count !=0)
 	        ptr /= count; 
 	else 
-		ptr=0;
-   std::cout<<"value :: "<<ptr<<"\n";
+		ptr=0;  
    cv::Point2f cent(ptr,(height-201)/2);
-   cv::circle(crop_img,cent, 10, cv::Scalar(255,0,0),2,8,0);
+   if (ptr > left && ptr< right)
+	{
+		 cv::circle(crop_img,cent, 10, cv::Scalar(255,0,0),2,8,0);
+	}
+   else if (ptr <= left)
+	{
+	cv::circle(crop_img,cent, 20, cv::Scalar(255,0,0),2,8,0);	
+	}
+   else if (ptr >= right)
+	{
+	cv::circle(crop_img,cent, 20, cv::Scalar(255,0,0),2,8,0);	
+	}
+	
+   std::cout<<"value :: "<<ptr<<"\n";
+   
+   //cv::circle(crop_img,cent, 10, cv::Scalar(255,0,0),2,8,0);
    //cv::imshow("canny", canny); 
    cv::imshow("window1", crop_img);
    cv::imshow("window2", canny); 
