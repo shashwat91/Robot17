@@ -16,6 +16,12 @@ void chatterCallback(const sensor_msgs::ImageConstPtr& msg)
    cv::namedWindow("window1");
    img_ptr = cv_bridge::toCvCopy(msg,sensor_msgs::image_encodings::BGR8);
    rgb_img=img_ptr ->image;
+   cvtColor(rgb_img,rgb_img,CV_BGR2GRAY);
+   /* Perform edge detection. */
+	toCanny(rgb_img, rgb_img);   
+
+	/* Perform line detection. */
+	toHough(rgb_img, lines); 
    cv::imshow("ROS Image", rgb_img); 
    cv::waitKey(1);
 }
