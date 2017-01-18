@@ -87,7 +87,7 @@ void func1(float x, float y)
     digitalWrite(M1REV,LOW);
     digitalWrite(M2FWD,HIGH);
     digitalWrite(M2REV,LOW);
-    delay(1000);
+    delay(100);
     
   }
   
@@ -98,7 +98,7 @@ void func1(float x, float y)
     digitalWrite(M1REV,HIGH);
     digitalWrite(M2FWD,LOW);
     digitalWrite(M2REV,HIGH);
-    delay(1000);
+    delay(100);
   }
 
   if( y == -1)
@@ -108,7 +108,7 @@ void func1(float x, float y)
     digitalWrite(M1REV,HIGH);
     digitalWrite(M2FWD,HIGH);
     digitalWrite(M2REV,LOW);
-    delay(1000);
+    delay(100);
   }
   
   if(y == 1)
@@ -118,7 +118,7 @@ void func1(float x, float y)
     digitalWrite(M1REV,LOW);
     digitalWrite(M2FWD,LOW);
     digitalWrite(M2REV,HIGH);
-    delay(1000);
+    delay(100);
   }
   
 }

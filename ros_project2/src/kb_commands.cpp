@@ -21,7 +21,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "test_node2");
   ros::NodeHandle n;
   ros::Publisher chatter_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
-  ros::Rate loop_rate(1);
+  //ros::Rate loop_rate(1);
   
   initscr();
 
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     //ROS_INFO("Entered character :: %d", c);
     chatter_pub.publish(xyz);
     ros::spinOnce();
-    loop_rate.sleep();
+   // loop_rate.sleep();
     //count++;
   }
   endwin();
