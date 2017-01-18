@@ -12,23 +12,29 @@ void chatterCallback(const sensor_msgs::ImageConstPtr& msg)
 {
    //ROS_INFO("I heard: [%s]", msg->data.c_str());
    cv_bridge::CvImagePtr img_ptr;
-   cv::Mat rgb_img, canny, lines,th;
+   cv::Mat rgb_img,flip_img, small,canny,lines,th;
    cv::namedWindow("window1");
    img_ptr = cv_bridge::toCvCopy(msg,sensor_msgs::image_encodings::BGR8);
    rgb_img=img_ptr ->image;
    cvtColor(rgb_img,rgb_img,CV_BGR2GRAY);
-	
-   threshold( rgb_img, th, 180 , 255,1);	//Setting thrashhold
-	cv::Canny(th, canny, 50, 200, 3);	//Performing canny
-    cv::HoughLinesP(canny, lines, 1, 0.01, 10, 50, 100);	//Detecting lines
+   
+   
+   cv::transpose(rgb_img, rgb_img);
+   cv::flip(rgb_img,flip_img,1);
+   cv::resize(flip_img,small,cvSize(405,720));
+   cv::Mat crop_img = small(cv::Rect(10,200,384,519));
+  //threshold( rgb_img, th, 180 , 255,1);	//Setting thrashhold
+   //cv::Canny(rgb_img, canny, 50, 200, 3);	//Performing canny
+  
+    //cv::HoughLinesP(canny, lines, 1, 0.01, 10, 50, 100);	//Detecting lines
    /* Perform edge detection. */
 	//cv::toCanny(rgb_img, rgb_img);   
 
 	/* Perform line detection. */
 	//cv::toHough(rgb_img, lines); 
-   cv::imshow("ROS Image", rgb_img); 
-   cv::imshow("canny", canny); 
-   cv::imshow("ROS Image", lines); 
+   cv::imshow("window1", crop_img); 
+   //cv::imshow("canny", canny); 
+   //cv::imshow("ROS Image", lines); 
    cv::waitKey(1);
 }
 
