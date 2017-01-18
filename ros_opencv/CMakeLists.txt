@@ -17,8 +17,8 @@ catkin_package()
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-add_executable(ros_camera src/ros_opencv.cpp)
-target_link_libraries(ros_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+#add_executable(ros_camera src/ros_opencv.cpp)
+#target_link_libraries(ros_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #add_dependencies(twist_ros beginner_tutorials_generate_messages_cpp)
 
 # %EndTag(FULLTEXT)%
