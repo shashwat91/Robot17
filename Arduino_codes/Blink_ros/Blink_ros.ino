@@ -6,26 +6,33 @@
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
 #include <ArduinoHardware.h>
+
 #define M1REV 7
 #define M1EN 24
 #define M1FWD 6
 #define M2REV 3
 #define M2EN 25
 #define M2FWD 2
+
+#define trigPin 23
+#define echoPin 22
+
 //ros::NodeHandle  nh;
 
-void messageCb( const geometry_msgs::Twist& serial_msg){
+void messageCb( const geometry_msgs::Twist& serial_msg)
+{
   func1(serial_msg.linear.x,serial_msg.angular.z);
   digitalWrite(13, HIGH-digitalRead(13));   // blink the led
 }
 
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &messageCb );
 
-class NewHardware : public ArduinoHardware{
-public : NewHardware():ArduinoHardware(&Serial1,57600){};
+class NewHardware : public ArduinoHardware
+{
+  public : NewHardware():ArduinoHardware(&Serial1,57600){};
 };
-ros::NodeHandle_<NewHardware> nh;
 
+ros::NodeHandle_<NewHardware> nh;
 
 void setup()
 { 
@@ -35,6 +42,10 @@ void setup()
   pinMode(M2REV, OUTPUT);
   pinMode(M2EN, OUTPUT);
   pinMode(M2FWD, OUTPUT);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  
   digitalWrite(M1EN,HIGH);
   digitalWrite(M2EN,HIGH);
   digitalWrite(M1FWD,LOW);
@@ -42,6 +53,7 @@ void setup()
   digitalWrite(M2FWD,LOW);
   digitalWrite(M2REV,LOW);
   pinMode(13, OUTPUT);
+
   nh.initNode();
   nh.subscribe(sub);
 }
@@ -58,6 +70,9 @@ void loop()
 
 void func1(float x, float y)
 {
+  if(!ping)
+    return;
+    
   if(x == -1)
   { 
     //run forward
@@ -99,5 +114,22 @@ void func1(float x, float y)
     delay(1000);
   }
   
+}
+
+bool ping()
+{
+  long duration;
+  long distance;
+  digitalWrite(trigPin, LOW);
+  delay(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration/2) / 29.1;
+  if(distance >= 20)
+    return true;
+  else 
+    return false;
 }
 
