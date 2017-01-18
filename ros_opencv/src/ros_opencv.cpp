@@ -10,8 +10,10 @@
 void chatterCallback(const sensor_msgs::ImageConstPtr& msg)
 {
    //ROS_INFO("I heard: [%s]", msg->data.c_str());
+   cv::Mat rgb_img(WIDTH, HEIGHT, CV_8UC3);
+   toCVImg(img, rgb_img);
    cv::namedWindow("window1");
-   cv::imshow("ROS Image", cv_bridge::toCvShare(msg, "bgr8")->image);
+   cv::imshow("ROS Image", rgb_img);  //cv_bridge::toCvShare(msg, "bgr8")->image
    cv::waitKey(0);
 }
 
