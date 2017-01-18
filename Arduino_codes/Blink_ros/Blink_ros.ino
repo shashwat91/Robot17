@@ -70,7 +70,7 @@ void loop()
 
 void func1(float x, float y)
 {
-  if(!ping)
+  if(!ping())
     return;
     
   if(x == -1)
