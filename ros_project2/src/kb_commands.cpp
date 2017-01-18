@@ -43,25 +43,25 @@ int main(int argc, char **argv)
       switch(kb_val)
       {
         case 119:
-        case 87: 
+        case 87:  //Forward, w
 
             xyz.linear.x = -1.0;
             xyz.angular.z = 0;
             break;
         case 115:
-        case 83:
+        case 83: //Back, s
 
             xyz.linear.x = 1.0;
             xyz.angular.z = 0;
             break;
         case 97:
-        case 65:
+        case 65:  //Left, a
             xyz.linear.x = 0.0;
 
             xyz.angular.z = 1.0;
             break;
         case 100:
-        case 68:
+        case 68:  //Right, d
             xyz.linear.x = 0.0;
 
             xyz.angular.z = -1.0;

@@ -16,27 +16,34 @@
 //Constants
 #define width 405
 #define height 720
+geometry_msgs::Twist xyz;
 
 void setPublish(double ptr)
 {  
   double left = (width -21)/2 -30;
   double right = (width - 21)/2 + 30;
+
+  
   //Converting calculated center to movement direction
   if(ptr == 0) //Stop
   {
-    //No center on image
+    xyz.linear.x = 0;
+    xyz.angular.z = 0;
   }
   else if (ptr > left && ptr< right) //Stright
   {
-   // cv::circle(crop_img,cent, 10, cv::Scalar(255,0,0),2,8,0);
+    xyz.linear.x = -1.0;
+    xyz.angular.z = 0;
   }
   else if (ptr <= left) //Left
   {
-    //cv::circle(crop_img,cent, 20, cv::Scalar(255,0,0),2,8,0); 
+    xyz.linear.x = 0;
+    xyz.angular.z = 1.0;
   }
   else if (ptr >= right) //Right
   {
-    //cv::circle(crop_img,cent, 20, cv::Scalar(255,0,0),2,8,0); 
+    xyz.linear.x = 0;
+    xyz.angular.z = -1.0;
   }
 
 }
@@ -111,9 +118,19 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "line_algo");
   ros::NodeHandle n;
+  ros::Rate loop_rate(5);
+  
   image_transport::ImageTransport it(n);
   image_transport::Subscriber sub = it.subscribe("/camera/image", 1, ImageCallback);
-  ros::spin();
+
+  ros::Publisher robo_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+
+  while(ros::ok())
+  {
+    robo_pub.publish(xyz);
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
   cv::destroyWindow( "window1" );
   cv::destroyWindow( "window2" );
   return 0;
