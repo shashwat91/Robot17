@@ -1,5 +1,3 @@
-
-
 /* 
  * rosserial Subscriber Example
  * Blinks an LED on callback
@@ -7,7 +5,7 @@
 #include <TimerOne.h>
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
-//#include <ArduinoHardware.h>
+#include <ArduinoHardware.h>
 
 #define M1REV 7
 #define M1EN 24
@@ -21,7 +19,7 @@
 
 bool stop = false;
 
-ros::NodeHandle  nh;
+//ros::NodeHandle  nh;
 
 void messageCb( const geometry_msgs::Twist& serial_msg)
 {
@@ -30,13 +28,12 @@ void messageCb( const geometry_msgs::Twist& serial_msg)
 }
 
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &messageCb );
-/*
 class NewHardware : public ArduinoHardware
 {
   public : NewHardware():ArduinoHardware(&Serial1,57600){};
 };
 
-ros::NodeHandle_<NewHardware> nh;*/
+ros::NodeHandle_<NewHardware> nh;
 
 void setup()
 { 

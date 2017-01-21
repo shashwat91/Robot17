@@ -21,7 +21,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "test_node2");
   ros::NodeHandle n;
   ros::Publisher chatter_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
-  //ros::Rate loop_rate(1);
+  ros::Rate loop_rate(5);
   
   initscr();
 
@@ -55,12 +55,12 @@ int main(int argc, char **argv)
         case 97:
         case 65:  //Left, a
             xyz.linear.x = 0.0;
-            xyz.angular.z = -1.0;
+            xyz.angular.z = 1.0;
             break;
         case 100:
         case 68:  //Right, d
             xyz.linear.x = 0.0;
-            xyz.angular.z = 1.0;
+            xyz.angular.z = -1.0;
             break;
         case 27:
             endwin();

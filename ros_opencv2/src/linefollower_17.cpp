@@ -16,12 +16,13 @@
 //Constants
 #define width 405
 #define height 720
+#define lineTolerance 30
 geometry_msgs::Twist xyz;
 
 void setPublish(double ptr)
 {  
-  double left = (width -21)/2 -30;
-  double right = (width - 21)/2 + 30;
+  double left = (width -21)/2 - lineTolerance;
+  double right = (width - 21)/2 + lineTolerance;
 
   
   //Converting calculated center to movement direction
