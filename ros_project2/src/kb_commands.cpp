@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 
   while (ros::ok())
   {
+    bool update = false;
     geometry_msgs::Twist xyz;
 
     if (kbhit()) 
@@ -46,21 +47,25 @@ int main(int argc, char **argv)
         case 87:  //Forward, w
             xyz.linear.x = -1.0;
             xyz.angular.z = 0;
+            update = true;
             break;
         case 115:
         case 83: //Back, s
             xyz.linear.x = 1.0;
             xyz.angular.z = 0;
+            update = true;
             break;
         case 97:
         case 65:  //Left, a
             xyz.linear.x = 0.0;
             xyz.angular.z = 1.0;
+            update = true;
             break;
         case 100:
         case 68:  //Right, d
             xyz.linear.x = 0.0;
             xyz.angular.z = -1.0;
+            update = true;
             break;
         case 27:
             endwin();
@@ -71,7 +76,8 @@ int main(int argc, char **argv)
     }
 
     //ROS_INFO("Entered character :: %d", c);
-    chatter_pub.publish(xyz);
+    if(update)
+      chatter_pub.publish(xyz);
     ros::spinOnce();
    // loop_rate.sleep();
     //count++;
