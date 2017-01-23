@@ -19,7 +19,7 @@
 
 bool stop = false;
 
-//ros::NodeHandle  nh;
+//ros::NodeHandle  nh; --commented code, not a comment
 
 void messageCb( const geometry_msgs::Twist& serial_msg)
 {
