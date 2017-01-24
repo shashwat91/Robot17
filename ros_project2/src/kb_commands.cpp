@@ -45,13 +45,13 @@ int main(int argc, char **argv)
       {
         case 119:
         case 87:  //Forward, w
-            xyz.linear.x = -1.0;
+            xyz.linear.x = 1.0;
             xyz.angular.z = 0;
             update = true;
             break;
         case 115:
         case 83: //Back, s
-            xyz.linear.x = 1.0;
+            xyz.linear.x = -1.0;
             xyz.angular.z = 0;
             update = true;
             break;

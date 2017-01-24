@@ -35,36 +35,37 @@ void messageCb( const geometry_msgs::Twist& serial_msg)
 
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", &messageCb );
 
-void initTimer()
+void initTimer1()
 {
-  // Using timer1 
-  cli();           // disable all interrupts
+  // Using timer1 for ultrasonic sensor
+  cli();
   
   TCCR1A = 0;
   TCCR1B = 0;
-  OCR1A = 6260; //Overload value
-  TCCR1B |= (1 << WGM12); // turn on CTC mode:
-  TCCR1B |= (1 << CS12);    // 256 prescaler 
-  TIMSK1 |= (1 << OCIE1A); // enable timer compare mode
+  OCR1A = 6260; 
+  TCCR1B |= (1 << WGM12); 
+  TCCR1B |= (1 << CS12);   
+  TIMSK1 |= (1 << OCIE1A); 
   
-  sei();             // enable all interrupts
+  sei();
 }
+
+void initTimer5()
+{}
 
 void setup()
 { 
   pinMode(13, OUTPUT);
-  initTimer(); //Interrupt timer for every 100ms
+  initTimer1(); //Interrupt timer for every 100ms
+  initTimer5();
   nh.initNode();
   nh.subscribe(sub);
+  motor.setMotor(0,0);
 }
 
 void loop()
 {  
   nh.spinOnce();
-  digitalWrite(M1FWD,LOW);
-  digitalWrite(M1REV,LOW);
-  digitalWrite(M2FWD,LOW);
-  digitalWrite(M2REV,LOW);
   delay(10);
 }
 
