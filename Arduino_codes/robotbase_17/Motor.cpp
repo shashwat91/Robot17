@@ -44,7 +44,6 @@ void Motor::setMotor(float linear, float turn)
     //run forward
     setSpeed(MAX_PWM_VALUE * vel, MAX_PWM_VALUE * vel);   
   }
-  
   else if(linear < 0)
   {
     //run backward
@@ -56,7 +55,6 @@ void Motor::setMotor(float linear, float turn)
     //go right
     setSpeed(MAX_PWM_VALUE * vel, MAX_PWM_VALUE * vel * (-0.5));
   }
-  
   else if(turn> 0)
   {
   //go left
@@ -71,24 +69,24 @@ void Motor::setSpeed(int pwm_l, int pwm_r)
 
   if(pwm_r > 0) //right motor forward
   {
-   analogWrite(R_FWD, pwm_r);
-   analogWrite(R_REV, 0);
+   OCR3B = (pwm_r / MAX_PWM_VALUE) * MAX_PWM_REG;//analogWrite(R_FWD, pwm_r);
+   OCR3C = 0;//analogWrite(R_REV, 0);
   }
   else //right motor backwards
   {
-   analogWrite(R_FWD, 0); 
-   analogWrite(R_REV, fabs(pwm_r)); 
+   OCR3B = 0;//analogWrite(R_FWD, 0); 
+   OCR3C = (fabs(pwm_r) / MAX_PWM_VALUE) * MAX_PWM_REG;//analogWrite(R_REV, fabs(pwm_r)); 
   }
     
   if(pwm_l > 0) //left motor forward
   {
-   analogWrite(L_FWD, pwm_l);
-   analogWrite(L_REV, 0);
+   OCR4A = (pwm_r / MAX_PWM_VALUE) * MAX_PWM_REG;//analogWrite(L_FWD, pwm_l);
+   OCR4B = 0;//analogWrite(L_REV, 0);
   }
   else //left motor backwards
   {
-   analogWrite(L_FWD, 0);
-   analogWrite(L_REV, fabs(pwm_l));      
+   OCR4A = 0;//analogWrite(L_FWD, 0);
+   OCR4B = (fabs(pwm_r) / MAX_PWM_VALUE) * MAX_PWM_REG;//analogWrite(L_REV, fabs(pwm_l));      
   }
   delay(100);
   stop();
@@ -97,9 +95,9 @@ void Motor::setSpeed(int pwm_l, int pwm_r)
 void Motor::stop()
 {
   digitalWrite(L_EN,0);
-  analogWrite(L_FWD,0);
-  analogWrite(L_REV,0);
+  OCR4A = 0;//analogWrite(L_FWD,0);
+  OCR4B = 0;//analogWrite(L_REV,0);
   digitalWrite(R_EN,0);
-  analogWrite(R_FWD,0);
-  analogWrite(R_REV,0);
+  OCR3B = 0;//analogWrite(R_FWD,0);
+  OCR3C = 0;//analogWrite(R_REV,0);
 }

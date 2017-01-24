@@ -5,10 +5,10 @@
 #include "Ultrasonic.h"
 #include "Motor.h"
 
-#define M1REV 7
+#define M1REV 7 //Motor on left
 #define M1EN 24
 #define M1FWD 6
-#define M2REV 3
+#define M2REV 3 //Motor on right
 #define M2EN 25
 #define M2FWD 2
 
@@ -50,14 +50,26 @@ void initTimer1()
   sei();
 }
 
-void initTimer5()
-{}
+void initPwmTimer()
+{
+  //Timer 3 and 4 are set at 10bit PWM mode. Max value=0x3FF
+  TCCR3A = _BV(COM3A1)|_BV(COM3B1) | _BV(WGM31) | _BV(WGM30);
+  TCCR3B = _BV(WGM32)| _BV(CS30); 
+  //OCR3A -- pin 5, not set
+  //OCR3B -- pin 2, Motor 2 FWD ,right
+  //OCR3C -- pin 4, Motor 2 REV 
+  TCCR4A = _BV(COM4C1)|_BV(COM4B1) | _BV(WGM41) | _BV(WGM40);
+  TCCR4B = _BV(WGM42)| _BV(CS40);
+  //OCR4A -- pin 6, Motor 1 FWD, left
+  //OCR4B -- pin 7, Motor 1 REV
+  //OCR4C -- pin 8, not set
+}
 
 void setup()
 { 
   pinMode(13, OUTPUT);
   initTimer1(); //Interrupt timer for every 100ms
-  initTimer5();
+  initPwmTimer();
   nh.initNode();
   nh.subscribe(sub);
   motor.setMotor(0,0);

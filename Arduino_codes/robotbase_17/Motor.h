@@ -3,6 +3,7 @@
 
 #define MAX_ROS_VALUE 1.0f
 #define MAX_PWM_VALUE 127
+#define MAX_PWM_REG 1023 //0x3FF
 
 class Motor
 {
