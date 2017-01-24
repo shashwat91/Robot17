@@ -33,7 +33,7 @@ void setPublish(double ptr)
   }
   else if (ptr > left && ptr< right) //Stright
   {
-    xyz.linear.x = -1.0;
+    xyz.linear.x = 1.0;
     xyz.angular.z = 0;
   }
   else if (ptr <= left) //Left

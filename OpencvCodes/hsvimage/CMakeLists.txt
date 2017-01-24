@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 2.8)
-project( hsvimage )
-find_package( OpenCV REQUIRED )
-add_executable( hsvimage hsvimage.cpp )
-target_link_libraries( hsvimage ${OpenCV_LIBS} )
