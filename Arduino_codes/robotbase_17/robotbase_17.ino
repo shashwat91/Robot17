@@ -5,23 +5,23 @@
 #include "Ultrasonic.h"
 #include "Motor.h"
 
-#define M1REV 7 //Motor on left
+#define M1REV 7
 #define M1EN 24
 #define M1FWD 6
-#define M2REV 3 //Motor on right
+#define M2REV 3
 #define M2EN 25
 #define M2FWD 2
 
 #define trigPin 23
 #define echoPin 22
 
-/*class NewHardware : public ArduinoHardware
+class NewHardware : public ArduinoHardware
 {
   public : NewHardware():ArduinoHardware(&Serial1,57600){};
 };
 
-ros::NodeHandle_<NewHardware> nh; //--When using bluetooth for communication*/
-ros::NodeHandle  nh; //--When using wired communication
+ros::NodeHandle_<NewHardware> nh; //--When using bluetooth for communication
+//ros::NodeHandle  nh; //--When using wired communication
 
 Ultrasonic range(trigPin, echoPin);
 Motor motor(M2EN, M2FWD, M2REV, M1EN, M1FWD, M1REV);
@@ -50,26 +50,14 @@ void initTimer1()
   sei();
 }
 
-void initPwmTimer()
-{
-  //Timer 3 and 4 are set at 10bit PWM mode. Max value=0x3FF
-  TCCR3A = _BV(COM3A1)| _BV(COM3C1)|_BV(COM3B1) | _BV(WGM31) | _BV(WGM30);
-  TCCR3B = _BV(WGM32)| _BV(CS30); 
-  //OCR3A -- pin 5, not set
-  //OCR3B -- pin 2, Motor 2 FWD ,right
-  //OCR3C -- pin 4, Motor 2 REV 
-  TCCR4A = _BV(COM3C1)| _BV(COM4A1)|_BV(COM4B1) | _BV(WGM41) | _BV(WGM40);
-  TCCR4B = _BV(WGM42)| _BV(CS40);
-  //OCR4A -- pin 6, Motor 1 FWD, left
-  //OCR4B -- pin 7, Motor 1 REV
-  //OCR4C -- pin 8, not set
-}
+void initTimer5()
+{}
 
 void setup()
 { 
   pinMode(13, OUTPUT);
   initTimer1(); //Interrupt timer for every 100ms
-  initPwmTimer();
+  initTimer5();
   nh.initNode();
   nh.subscribe(sub);
   motor.setMotor(0,0);
@@ -103,11 +91,13 @@ void adjustMotors(float x, float z)
 void ping()
 {
   stop = false;
-  digitalWrite(13, HIGH-digitalRead(13));   // blink the led
   long distance = range.distance_cm();  
   if(distance < 20)
     {
       stop = true;
+      digitalWrite(13, HIGH);   // blink the led
       motor.setMotor(0,0);
     }
+   else
+    digitalWrite(13, LOW);   // blink the led
 }
