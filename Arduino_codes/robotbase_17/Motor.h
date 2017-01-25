@@ -2,7 +2,9 @@
 #define Motor_h
 
 #define MAX_ROS_VALUE 1.0f
-#define MAX_PWM_VALUE 127
+#define MAX_PWM_VALUE 200
+#define MAX_PWM_TURN 127
+
 
 class Motor
 {

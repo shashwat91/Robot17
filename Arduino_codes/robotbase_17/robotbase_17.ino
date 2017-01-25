@@ -91,11 +91,13 @@ void adjustMotors(float x, float z)
 void ping()
 {
   stop = false;
-  digitalWrite(13, HIGH-digitalRead(13));   // blink the led
   long distance = range.distance_cm();  
   if(distance < 20)
     {
       stop = true;
+      digitalWrite(13, HIGH);   // blink the led
       motor.setMotor(0,0);
     }
+   else
+    digitalWrite(13, LOW);   // blink the led
 }

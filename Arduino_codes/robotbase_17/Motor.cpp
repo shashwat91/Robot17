@@ -48,19 +48,19 @@ void Motor::setMotor(float linear, float turn)
   else if(linear < 0)
   {
     //run backward
-    setSpeed(MAX_PWM_VALUE * vel, MAX_PWM_VALUE * vel); 
+    setSpeed(MAX_PWM_VALUE * vel *(-1), MAX_PWM_VALUE * vel *(-1)); 
   }
 
-  if( turn < 0)
+  if( turn > 0)
   {
     //go right
-    setSpeed(MAX_PWM_VALUE * vel, MAX_PWM_VALUE * vel * (-0.5));
+    setSpeed(MAX_PWM_TURN * vel, MAX_PWM_TURN * vel * (-0.5));
   }
   
-  else if(turn> 0)
+  else if(turn< 0)
   {
   //go left
-    setSpeed(MAX_PWM_VALUE * vel * (-0.5), MAX_PWM_VALUE * vel);
+    setSpeed(MAX_PWM_TURN * vel * (-0.5), MAX_PWM_TURN * vel);
   }
 }
 
