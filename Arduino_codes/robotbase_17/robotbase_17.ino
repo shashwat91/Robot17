@@ -15,13 +15,13 @@
 #define trigPin 23
 #define echoPin 22
 
-class NewHardware : public ArduinoHardware
+/*class NewHardware : public ArduinoHardware
 {
   public : NewHardware():ArduinoHardware(&Serial1,57600){};
 };
 
-ros::NodeHandle_<NewHardware> nh; //--When using bluetooth for communication
-//ros::NodeHandle  nh; //--When using wired communication
+ros::NodeHandle_<NewHardware> nh; //--When using bluetooth for communication*/
+ros::NodeHandle  nh; //--When using wired communication
 
 Ultrasonic range(trigPin, echoPin);
 Motor motor(M2EN, M2FWD, M2REV, M1EN, M1FWD, M1REV);
@@ -53,12 +53,12 @@ void initTimer1()
 void initPwmTimer()
 {
   //Timer 3 and 4 are set at 10bit PWM mode. Max value=0x3FF
-  TCCR3A = _BV(COM3A1)|_BV(COM3B1) | _BV(WGM31) | _BV(WGM30);
+  TCCR3A = _BV(COM3A1)| _BV(COM3C1)|_BV(COM3B1) | _BV(WGM31) | _BV(WGM30);
   TCCR3B = _BV(WGM32)| _BV(CS30); 
   //OCR3A -- pin 5, not set
   //OCR3B -- pin 2, Motor 2 FWD ,right
   //OCR3C -- pin 4, Motor 2 REV 
-  TCCR4A = _BV(COM4C1)|_BV(COM4B1) | _BV(WGM41) | _BV(WGM40);
+  TCCR4A = _BV(COM3C1)| _BV(COM4A1)|_BV(COM4B1) | _BV(WGM41) | _BV(WGM40);
   TCCR4B = _BV(WGM42)| _BV(CS40);
   //OCR4A -- pin 6, Motor 1 FWD, left
   //OCR4B -- pin 7, Motor 1 REV
