@@ -18,6 +18,7 @@
 #define height 720
 #define lineTolerance 30
 geometry_msgs::Twist xyz;
+double prev_ptr=0;
 
 void setPublish(double ptr)
 {  
@@ -26,25 +27,41 @@ void setPublish(double ptr)
 
   
   //Converting calculated center to movement direction
-  if(ptr == 0) //Stop
+  if(ptr == 0) 		// for blind spot( no line detected)
   {
-    xyz.linear.x = 0;
-    xyz.angular.z = 0;
+	if (prev_ptr == 2)		// if last step was turning left, keep turning left
+	{
+		xyz.linear.x = 0;
+    		xyz.angular.z = 1.0;
+	}
+	else if (prev_ptr ==3)		// if last step was turning right, keep turning right
+	{
+		xyz.linear.x = 0;
+    		xyz.angular.z = -1.0;
+	}
+	else 				// if last step was moving straight or no movement, do not move
+	{
+	        xyz.linear.x = 0;
+	        xyz.angular.z = 0;
+	}
   }
   else if (ptr > left && ptr< right) //Stright
   {
     xyz.linear.x = 1.0;
     xyz.angular.z = 0;
+    prev_ptr = 1;
   }
   else if (ptr <= left) //Left
   {
     xyz.linear.x = 0;
     xyz.angular.z = 1.0;
+    prev_ptr = 2;
   }
   else if (ptr >= right) //Right
   {
     xyz.linear.x = 0;
     xyz.angular.z = -1.0;
+    prev_ptr = 3;
   }
 
 }
