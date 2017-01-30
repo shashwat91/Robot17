@@ -3,15 +3,15 @@
 
 class Ultrasonic
 {
-  public:
-    Ultrasonic(int,int);
-    long distance_cm();
-    long distance_in();
+	public:
+		Ultrasonic(int,int);
+		long distance_cm();
+		long distance_in();
   
-  private:
-    int trigPin;
-    int echoPin;
-    long time();
+	private:
+		int trigPin;
+		int echoPin;
+		long time();
 };
 
 #endif //Ultrasonic_h
