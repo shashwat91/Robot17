@@ -1,3 +1,11 @@
+/**
+* Group number : 17
+* Student 1:
+* Shashwat Verma, 4507746
+* Student 2:
+* Ishu Goel, 4632699
+*/
+
 //ROS headers
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
@@ -17,36 +25,51 @@
 #define width 405
 #define height 720
 #define lineTolerance 30
-geometry_msgs::Twist xyz;
+geometry_msgs::Twist xyz;  //Global variables for publish message
+double prev_ptr=0;
 
 void setPublish(double ptr)
-{  
+{
   double left = (width -21)/2 - lineTolerance;
   double right = (width - 21)/2 + lineTolerance;
 
-  
   //Converting calculated center to movement direction
-  if(ptr == 0) //Stop
+  if(ptr == 0) 		// for blind spot( no line detected)
   {
-    xyz.linear.x = 0;
-    xyz.angular.z = 0;
+	if (prev_ptr == 2)		// if last step was turning left, keep turning left
+	{
+		xyz.linear.x = 0;
+    		xyz.angular.z = 1.0;
+	}
+	else if (prev_ptr ==3)		// if last step was turning right, keep turning right
+	{
+		xyz.linear.x = 0;
+    		xyz.angular.z = -1.0;
+	}
+	else 				// if last step was moving straight or no movement, do not move
+	{
+	        xyz.linear.x = 0;
+	        xyz.angular.z = 0;
+	}
   }
   else if (ptr > left && ptr< right) //Stright
   {
     xyz.linear.x = 1.0;
     xyz.angular.z = 0;
+    prev_ptr = 1;
   }
   else if (ptr <= left) //Left
   {
     xyz.linear.x = 0;
     xyz.angular.z = 1.0;
+    prev_ptr = 2;
   }
   else if (ptr >= right) //Right
   {
     xyz.linear.x = 0;
     xyz.angular.z = -1.0;
+    prev_ptr = 3;
   }
-
 }
 
 void lineDetect(cv::Mat edges)
@@ -73,7 +96,7 @@ void lineDetect(cv::Mat edges)
       ptr += mc[i].x;
       count++;
     }
-    cv::circle(edges,mc[i], 10, cv::Scalar(255,0,0),2,8,0);
+    cv::circle(edges,mc[i], 10, cv::Scalar(255,0,0),2,8,0);  //All regions are plotted using circles
   }
   
   //Finding center of all moments
@@ -89,7 +112,6 @@ void lineDetect(cv::Mat edges)
   setPublish(ptr);
   //cv::imshow("window1", crop_img); //Grey scale image with weighted center
   cv::imshow("window2", edges); //Edge image with all centers
-  
 }
 
 void ImageCallback(const sensor_msgs::ImageConstPtr& msg)
@@ -119,12 +141,12 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "line_algo");
   ros::NodeHandle n;
-  ros::Rate loop_rate(5);
+  ros::Rate loop_rate(5); //Pusblish rate is fixed at 5Hz
   
   image_transport::ImageTransport it(n);
-  image_transport::Subscriber sub = it.subscribe("/camera/image", 1, ImageCallback);
+  image_transport::Subscriber sub = it.subscribe("/camera/image", 1, ImageCallback); //Subscribing to decompressed image
 
-  ros::Publisher robo_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+  ros::Publisher robo_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1); //Pusblisher on cmd_vel topic
 
   while(ros::ok())
   {
