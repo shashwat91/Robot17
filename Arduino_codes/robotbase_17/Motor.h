@@ -1,3 +1,11 @@
+/**
+* Group number : 17
+* Student 1:
+* Shashwat Verma, 4507746
+* Student 2:
+* Ishu Goel, 4632699
+*/
+
 #ifndef Motor_h
 #define Motor_h
 
